@@ -1,6 +1,7 @@
 package com.e.phoneverification;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -27,6 +30,7 @@ public class VerificationActivity extends AppCompatActivity {
     EditText verificationCodeInput;
     Button signInBtn;
     ProgressBar progressBar;
+    TextView timerTextView;
 
     String phoneNumber, codeFromUser, mVerificationId;
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -34,6 +38,8 @@ public class VerificationActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     Snackbar mySnackbar;
+
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,21 @@ public class VerificationActivity extends AppCompatActivity {
         verificationCodeInput = findViewById(R.id.verificationCode);
         signInBtn = findViewById(R.id.signInButton);
         progressBar = findViewById(R.id.progressBar);
+        timerTextView = findViewById(R.id.timerTextView);
+
+        countDownTimer = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("Resend code in : " + millisUntilFinished / 1000 + " seconds");
+            }
+
+            @Override
+            public void onFinish() {
+                timerTextView.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+                prepareSnackbar(R.id.constraintLayout, "Verification Code Expired", true);
+            }
+        };
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -72,12 +93,16 @@ public class VerificationActivity extends AppCompatActivity {
                     verificationCodeInput.setText(code);
                     verifyCode(code);
                 }
+
+                timerTextView.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
                 Log.i("onVerificationFailed", "onVerificationFailed", e);
 
+                timerTextView.setVisibility(View.INVISIBLE);
                 progressBar.setVisibility(View.INVISIBLE);
 
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
@@ -94,6 +119,9 @@ public class VerificationActivity extends AppCompatActivity {
                 Log.i("onCodeSent", "onCodeSent:" + verificationId);
                 prepareSnackbar(R.id.constraintLayout, "Verification Code Sent", false);
                 signInBtn.setEnabled(true);
+                timerTextView.setVisibility(View.VISIBLE);
+
+                countDownTimer.start();
 
                 // Save verification ID and resending token so we can use them later
                 mVerificationId = verificationId;
