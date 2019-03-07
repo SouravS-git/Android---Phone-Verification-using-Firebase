@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PhoneVerification</string>
+    <string name="verification_title">Verify your phone number</string>
+    <string name="verification_desc">This App will send an SMS message (carrier charges may apply) to verify your phone number. Enter your country code and phone number:</string>
+    <string name="verification_phone_hint">Enter Phone Number</string>
+    <string name="next_btn_label">NEXT</string>
+    <string name="verification_btn_label">Login</string>
+    <string name="resend_verification_btn_label">Resend</string>
+    <string name="verification_code_hint">Enter Verification Code</string>
+</resources>
