@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "41954505245",
-    "firebase_url": "https://android-32ee3.firebaseio.com",
-    "project_id": "android-32ee3",
-    "storage_bucket": "android-32ee3.appspot.com"
+    "project_number": "409896750150",
+    "firebase_url": "https://android-89ad7.firebaseio.com",
+    "project_id": "android-89ad7",
+    "storage_bucket": "android-89ad7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:41954505245:android:5a7551f97c39c46e",
+        "mobilesdk_app_id": "1:409896750150:android:5a7551f97c39c46e",
         "android_client_info": {
           "package_name": "com.e.phoneverification"
         }
       },
       "oauth_client": [
         {
-          "client_id": "41954505245-ji1ouobcchd52hdhhgvi91o7u06g31i3.apps.googleusercontent.com",
+          "client_id": "409896750150-uf73bjua6ci8rtgs7u7s1o7e0d8omnek.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.e.phoneverification",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "41954505245-nlohqgqv774ua1l6tee7fq6n16kngq4i.apps.googleusercontent.com",
+          "client_id": "409896750150-dpqb1e2vsg5c3s254so2dffekktqh1u3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB2nYufEGe-oGEQP_oLRG9LceUTszMIz_o"
+          "current_key": "AIzaSyDVSHX2s5eWnBytg0M1de7ZY7uqMq-l_wQ"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "41954505245-nlohqgqv774ua1l6tee7fq6n16kngq4i.apps.googleusercontent.com",
+              "client_id": "409896750150-dpqb1e2vsg5c3s254so2dffekktqh1u3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
